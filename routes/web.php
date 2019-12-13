@@ -25,3 +25,13 @@ Route::get('post/{slug}', function($slug){
 	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
 	return view('post', compact('post'));
 });
+Route::get('edi', function(){
+	
+    $posts = App\Post::all();
+	return view('main', compact('posts'));
+});
+
+Route::get('product/{slug}', function($slug){
+	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
+	return view('product', compact('post'));
+});
