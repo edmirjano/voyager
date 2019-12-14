@@ -39,3 +39,12 @@ Route::get('blog/{slug}', function($slug){
 	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
 	return view('singleblog', compact('post'));
 });
+Route::get('about', function(){
+	return view('about');
+});
+Route::get('contact', function(){
+	return view('contact');
+});
+Route::get('category', function(){
+	return view('category');
+});
