@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     $posts = App\Post::all();
-    return view('home', compact('posts'));
+    return view('main', compact('posts'));
 });
 
 
@@ -25,13 +25,17 @@ Route::get('post/{slug}', function($slug){
 	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
 	return view('post', compact('post'));
 });
-Route::get('edi', function(){
-	
-    $posts = App\Post::all();
-	return view('main', compact('posts'));
-});
+
 
 Route::get('product/{slug}', function($slug){
 	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
 	return view('product', compact('post'));
+});
+Route::get('/blog', function () {
+    $posts = App\Post::where('category_id', '=', 4)->get();
+    return view('blog', compact('posts'));
+});
+Route::get('blog/{slug}', function($slug){
+	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
+	return view('singleblog', compact('post'));
 });
